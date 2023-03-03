@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interview Question</title>
+
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+
+  <body>
+    <div><a href="#">Scores</a></div>
+
+    <div>Time: <span id="time">0</span></div>
+
+    <section>
+      <article class="start" id ="start-page">
+        <h1>Coding Quiz Challenge</h1>
+        <p>try to answer as soon as possible</p>
+        <button id="start">Start Quiz</button>
+      </article>
+
+      <article id="questions" class="hide">
+        <h2 id="mainquestions"</h2>
+        <div id="answers" class="answers"></div>
+      </article>
+
+      <article id="lastPage" class="hide">
+        <h2>Test is Over!</h2>
+        <p>Here is your final score :<span id="final-score"></span></p>
+        <p>
+          Enter initials: <input type="text" id="initials" max="3" />
+          <button id="submit">Submit</button>
+        </p>
+      </article>
+    </section>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
