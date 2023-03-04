@@ -51,38 +51,39 @@ function startQuiz() {
   timeStarter.textContent = timeLeft;
   // console.log(timeLeft);
 
-  getMyQuestion();
+  getMyQuestion(0);
 }
 
-questionIndex = 0;
-function getMyQuestion() {
+//questionIndex = 0;
+function getMyQuestion(questionIndex) {
   var currentQuestion = myQuestions[questionIndex];
 
   mainquestions.textContent = currentQuestion.question;
 
   answers.textContent = "";
-
-  for (var i = 0; i < myQuestions.length; i++) {
+  for (var i = 0; i < currentQuestion.qanswers.length; i++) {
     var answer = currentQuestion.qanswers[i];
-    answers.textContent = answer;
+    var answerButton = document.createElement("button");
+    answerButton.setAttribute("value", answer);
 
-    var label = document.createElement("label");
-    label.textContent = answer;
-    answers.appendChild(label);
-    console.log(answer);
-
-    var input = document.createElement("input");
-    input.setAttribute("type", "radio");
-    input.setAttribute("name", "radio");
-    label.appendChild(input);
-
-    input.addEventListener("change", function (event) {
-      //console.log(event.target);
-      //selectAns();
-    });
-
-    label.appendChild(input);
+    answerButton.textContent = answer;
+    answers.appendChild(answerButton);
   }
+
+  // for (var i = 0; i < myQuestions.length; i++) {
+  //   var answer = currentQuestion.qanswers[i];
+  //   //answers.textContent = answer;
+  //   answers.innerHTML =
+  //     "<button>" +
+  //     currentQuestion.qanswers[0] +
+  //     "</button> <button>" +
+  //     currentQuestion.qanswers[1] +
+  //     "</button><button>" +
+  //     currentQuestion.qanswers[2] +
+  //     "</button> <button>" +
+  //     currentQuestion.qanswers[3] +
+  //     "</button>";
+  // }
 }
 
 function answerSelect() {
@@ -98,12 +99,13 @@ function finishedQuiz() {
 }
 
 function viewScores() {
+  initials;
   //showing next page high score page
 }
 
 startButton.addEventListener("click", startGame);
 submitButton.addEventListener("click", viewScores);
-//answers.addEventListener("click", answerSelect);
+answers.addEventListener("click", answerSelect);
 
 //when yu click the button a timer will start
 //when you click on the button question will appear
