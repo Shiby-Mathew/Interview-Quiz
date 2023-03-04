@@ -74,10 +74,11 @@ function getMyQuestion() {
     var input = document.createElement("input");
     input.setAttribute("type", "radio");
     input.setAttribute("name", "radio");
+    label.appendChild(input);
 
     input.addEventListener("change", function (event) {
-      console.log(event.target);
-      selectAns();
+      //console.log(event.target);
+      //selectAns();
     });
 
     label.appendChild(input);
@@ -85,7 +86,7 @@ function getMyQuestion() {
 }
 
 function answerSelect() {
-  // console.log("inside answer slevt");
+  // console.log("inside answer ");
 }
 
 function finishedQuiz() {
