@@ -5,8 +5,8 @@ var submitButton = document.getElementById("submit");
 var mainquestions = document.getElementById("mainquestions");
 var answers = document.getElementById("answers");
 var name = document.getElementById("initials");
-
 var totalScore = document.getElementById("total-score");
+var correctAns = 0;
 
 var myQuestions = [
   {
@@ -41,11 +41,8 @@ var myQuestions = [
     correct: "CSS",
   },
 ];
-function startGame(event) {
-  startQuiz();
-}
 
-var timeLeft = 5;
+var timeLeft = 10;
 function startQuiz() {
   // hide start screen
   var startPage = document.getElementById("start-page");
@@ -74,7 +71,7 @@ function getMyQuestion(questionIndex) {
 
   mainquestions.textContent = currentQuestion.question;
 
-  answers.textContent = "";
+  //answers.textContent = "";
   for (var i = 0; i < currentQuestion.qanswers.length; i++) {
     var answer = currentQuestion.qanswers[i];
     var answerButton = document.createElement("button");
@@ -83,8 +80,6 @@ function getMyQuestion(questionIndex) {
     answerButton.textContent = answer;
     answers.appendChild(answerButton);
   }
-  totalScore = 10;
-  totalScore.textContent = totalScore;
 }
 
 // for (var i = 0; i < myQuestions.length; i++) {
@@ -106,6 +101,7 @@ function answerSelect() {
 }
 
 function finishedQuiz() {
+  // totalScore.textContent = 10;
   clearInterval(timerId);
   var lastPage = document.getElementById("lastPage");
   lastPage.setAttribute("class", "start");
@@ -115,13 +111,14 @@ function finishedQuiz() {
 
 function viewScores() {
   window.open("highScore.html");
+  // window.location.href = "highscores.html";
 
   //showing next page high score page
   //var intials = name.value ;
   //
 }
 //Game Start button
-startButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startQuiz);
 
 //selecting Answers
 answers.addEventListener("click", answerSelect);
