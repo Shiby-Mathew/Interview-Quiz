@@ -4,7 +4,7 @@ var timeStarter = document.getElementById("time");
 var submitButton = document.getElementById("submit");
 var mainquestions = document.getElementById("mainquestions");
 var answers = document.getElementById("answers");
-var name = document.getElementById("initials");
+var initialInput = document.querySelector("#initials");
 var totalScore = document.getElementById("total-score");
 var correctAns = 0;
 var questionIndex = 0;
@@ -43,7 +43,7 @@ var myQuestions = [
   },
 ];
 
-var timeLeft = 60;
+var timeLeft = 10;
 function startQuiz() {
   // hide start screen
   var startPage = document.getElementById("start-page");
@@ -93,7 +93,7 @@ function answerSelect() {
     return;
   }
   var selectedAns = this.value;
-  console.log(questionIndex);
+  // console.log(questionIndex);
   if (selectedAns === myQuestions[questionIndex].correct) {
     handleCorrect();
     console.log("correct");
@@ -102,32 +102,47 @@ function answerSelect() {
     console.log("incorrect");
   }
   questionIndex++;
-  console.log(questionIndex);
-  console.log(timeLeft);
+
   getMyQuestion();
 }
 
 function handleCorrect() {
   correctAns++;
+  //message= "correct";
 }
 
 function handleWrong() {
   timeLeft -= 15;
+  //message = "wrong";
 }
 
 function finishedQuiz() {
   totalScore.textContent = correctAns;
   clearInterval(timerId);
-  timeLeft = 0;
+
   var lastPage = document.getElementById("lastPage");
   lastPage.setAttribute("class", "start");
   mainquestions.textContent = "";
   answers.textContent = "";
 }
 
-function viewScores() {
-  //window.location.href = "highscores.html";
+function viewScores(event) {
+  event.preventDefault();
+  var name = initialInput.value.trim();
+  if (name !== "") {
+    var scoreInfo = {
+      initialName: name,
+      totalScore: correctAns,
+    };
+
+    console.log(scoreInfo);
+    localStorage.setItem("scoreInfo", JSON.stringify(scoreInfo));
+  }
+
+  window.open("highScore.html");
+  //window.location.href = "highScore.html";
 }
+
 //Game Start button
 startButton.addEventListener("click", startQuiz);
 
