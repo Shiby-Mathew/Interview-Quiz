@@ -4,27 +4,41 @@ var timeStarter = document.getElementById("time");
 var submitButton = document.getElementById("submit");
 var mainquestions = document.getElementById("mainquestions");
 var answers = document.getElementById("answers");
+var name = document.getElementById("initials");
+
+var totalScore = document.getElementById("total-score");
 
 var myQuestions = [
   {
-    question: "what is your name?",
-    qanswers: ["Shiby", "Mathew", "Shiny", "Liz"],
-    correct: "Shiby",
+    question: "Who developed JavaScript ?",
+    qanswers: [
+      "James Gosling",
+      "Bjarne Stroustrup",
+      "Berndan Eich",
+      "Rasmas Lerdorf",
+    ],
+    correct: "Berndan Eich",
   },
   {
-    question: "Where do you live?",
-    qanswers: ["Sydney", "Melbourne", "Queensland", "Other"],
-    correct: "Sydney",
+    question: "What is the first name of JavaScript ?",
+    qanswers: ["Java", "Mocha", "LiveScript", "TypeScript"],
+    correct: "Mocha",
   },
   {
-    question: "what is your name?",
-    qanswers: ["Shiby", "Mathew", "Shiny", "Liz"],
-    correct: "Shiby",
+    question:
+      "Which of the following is used to read ant HTML page and render it?",
+    qanswers: ["Web Server", "Web Network", "Web Browser", "Web Matrix"],
+    correct: "Web Browser",
   },
   {
-    question: "Where do you live?",
-    qanswers: ["Sydney", "Melbourne", "Queensland", "Other"],
-    correct: "Sydney",
+    question: "Which element is used to get highlighted text in HTML5 ",
+    qanswers: ["<u>", "<mark>", "<highligh>", "<b>"],
+    correct: "<mark>",
+  },
+  {
+    question: "Which element is used for styling HTML5 element ",
+    qanswers: ["JavaScript", "PHP", "jQuery", "CSS"],
+    correct: "CSS",
   },
 ];
 function startGame(event) {
@@ -37,7 +51,7 @@ function startQuiz() {
   var startPage = document.getElementById("start-page");
   startPage.setAttribute("class", "hide");
 
-  questionsDiv.setAttribute("class", start);
+  questionsDiv.setAttribute("class", "start");
 
   timerId = setInterval(function () {
     timeLeft--;
@@ -65,26 +79,27 @@ function getMyQuestion(questionIndex) {
     var answer = currentQuestion.qanswers[i];
     var answerButton = document.createElement("button");
     answerButton.setAttribute("value", answer);
-
+    answerButton.setAttribute("style", "padding:8px; margin:8px");
     answerButton.textContent = answer;
     answers.appendChild(answerButton);
   }
-
-  // for (var i = 0; i < myQuestions.length; i++) {
-  //   var answer = currentQuestion.qanswers[i];
-  //   //answers.textContent = answer;
-  //   answers.innerHTML =
-  //     "<button>" +
-  //     currentQuestion.qanswers[0] +
-  //     "</button> <button>" +
-  //     currentQuestion.qanswers[1] +
-  //     "</button><button>" +
-  //     currentQuestion.qanswers[2] +
-  //     "</button> <button>" +
-  //     currentQuestion.qanswers[3] +
-  //     "</button>";
-  // }
+  totalScore = 10;
+  totalScore.textContent = totalScore;
 }
+
+// for (var i = 0; i < myQuestions.length; i++) {
+//   var answer = currentQuestion.qanswers[i];
+//   //answers.textContent = answer;
+//   answers.innerHTML =
+//     "<button>" +
+//     currentQuestion.qanswers[0] +
+//     "</button> <button>" +
+//     currentQuestion.qanswers[1] +
+//     "</button><button>" +
+//     currentQuestion.qanswers[2] +
+//     "</button> <button>" +
+//     currentQuestion.qanswers[3] +
+//     "</button>";
 
 function answerSelect() {
   // console.log("inside answer ");
@@ -99,16 +114,24 @@ function finishedQuiz() {
 }
 
 function viewScores() {
-  initials;
-  //showing next page high score page
-}
+  window.open("highScore.html");
 
+  //showing next page high score page
+  //var intials = name.value ;
+  //
+}
+//Game Start button
 startButton.addEventListener("click", startGame);
-submitButton.addEventListener("click", viewScores);
+
+//selecting Answers
 answers.addEventListener("click", answerSelect);
 
-//when yu click the button a timer will start
-//when you click on the button question will appear
-// when you select options it will say correct or not
-//go to next question untill the array finishes
-//last page for enter your initials and save that will link to highscore page
+//Last page adding initials and click submit it will take you high score page
+submitButton.addEventListener("click", viewScores);
+
+//click on answerSelect will check value is correct or not
+//pass a message answer is wrong or correct
+//when it is wrong reduce 15sec from time
+//count the correct answer and display the sum as final score
+//save the sum in local storage make it stringify
+//when you enter initials in texbox press button it wll take you highscore page and shows all highscores in <li>
