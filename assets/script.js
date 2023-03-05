@@ -7,6 +7,7 @@ var answers = document.getElementById("answers");
 var name = document.getElementById("initials");
 var totalScore = document.getElementById("total-score");
 var correctAns = 0;
+var questionIndex = 0;
 
 var myQuestions = [
   {
@@ -42,7 +43,7 @@ var myQuestions = [
   },
 ];
 
-var timeLeft = 10;
+var timeLeft = 60;
 function startQuiz() {
   // hide start screen
   var startPage = document.getElementById("start-page");
@@ -55,23 +56,26 @@ function startQuiz() {
     timeStarter.textContent = timeLeft;
 
     if (timeLeft <= 0) {
+      timeLeft = 0;
       finishedQuiz();
     }
   }, 1000);
 
   timeStarter.textContent = timeLeft;
-  // console.log(timeLeft);
-
-  getMyQuestion(0);
+  getMyQuestion();
 }
 
-//questionIndex = 0;
-function getMyQuestion(questionIndex) {
+function getMyQuestion() {
+  if (questionIndex === myQuestions.length) {
+    finishedQuiz();
+    timeStarter.textContent = 0;
+    return;
+  }
   var currentQuestion = myQuestions[questionIndex];
 
   mainquestions.textContent = currentQuestion.question;
 
-  //answers.textContent = "";
+  answers.textContent = "";
   for (var i = 0; i < currentQuestion.qanswers.length; i++) {
     var answer = currentQuestion.qanswers[i];
     var answerButton = document.createElement("button");
@@ -79,30 +83,42 @@ function getMyQuestion(questionIndex) {
     answerButton.setAttribute("style", "padding:8px; margin:8px");
     answerButton.textContent = answer;
     answers.appendChild(answerButton);
+    answerButton.addEventListener("click", answerSelect);
   }
 }
 
-// for (var i = 0; i < myQuestions.length; i++) {
-//   var answer = currentQuestion.qanswers[i];
-//   //answers.textContent = answer;
-//   answers.innerHTML =
-//     "<button>" +
-//     currentQuestion.qanswers[0] +
-//     "</button> <button>" +
-//     currentQuestion.qanswers[1] +
-//     "</button><button>" +
-//     currentQuestion.qanswers[2] +
-//     "</button> <button>" +
-//     currentQuestion.qanswers[3] +
-//     "</button>";
-
 function answerSelect() {
-  // console.log("inside answer ");
+  if (questionIndex === myQuestions.length) {
+    finishedQuiz();
+    return;
+  }
+  var selectedAns = this.value;
+  console.log(questionIndex);
+  if (selectedAns === myQuestions[questionIndex].correct) {
+    handleCorrect();
+    console.log("correct");
+  } else {
+    handleWrong();
+    console.log("incorrect");
+  }
+  questionIndex++;
+  console.log(questionIndex);
+  console.log(timeLeft);
+  getMyQuestion();
+}
+
+function handleCorrect() {
+  correctAns++;
+}
+
+function handleWrong() {
+  timeLeft -= 15;
 }
 
 function finishedQuiz() {
-  // totalScore.textContent = 10;
+  totalScore.textContent = correctAns;
   clearInterval(timerId);
+  timeLeft = 0;
   var lastPage = document.getElementById("lastPage");
   lastPage.setAttribute("class", "start");
   mainquestions.textContent = "";
@@ -110,25 +126,9 @@ function finishedQuiz() {
 }
 
 function viewScores() {
-  window.open("highScore.html");
-  // window.location.href = "highscores.html";
-
-  //showing next page high score page
-  //var intials = name.value ;
-  //
+  //window.location.href = "highscores.html";
 }
 //Game Start button
 startButton.addEventListener("click", startQuiz);
 
-//selecting Answers
-answers.addEventListener("click", answerSelect);
-
-//Last page adding initials and click submit it will take you high score page
 submitButton.addEventListener("click", viewScores);
-
-//click on answerSelect will check value is correct or not
-//pass a message answer is wrong or correct
-//when it is wrong reduce 15sec from time
-//count the correct answer and display the sum as final score
-//save the sum in local storage make it stringify
-//when you enter initials in texbox press button it wll take you highscore page and shows all highscores in <li>
