@@ -1,19 +1,28 @@
 var listEl = document.querySelector("#highscores");
+var clearButton = document.getElementById("clear");
 
 function showScores() {
-  var scoreInfo = JSON.parse(window.localStorage.getItem("scoreInfo"));
-  console.log(scoreInfo.initialName);
+  var totalScores =
+    JSON.parse(window.localStorage.getItem("totalScores")) || [];
+  for (var i = 0; i < totalScores.length; i++) {
+    var liEl = document.createElement("li");
+    liEl.setAttribute("style", "text-align:center");
+    liEl.textContent =
+      totalScores[i].initialName + " - " + totalScores[i].totalScore;
 
-  var li1 = document.createElement("li");
-  li1.textContent =
-    "Initials : " + scoreInfo.initialName + " - Score: " + scoreInfo.totalScore;
-  console.log("display");
-  listEl.appendChild(li1);
+    listEl.appendChild(liEl);
+  }
+
+  //   var scoreInfo = JSON.parse(window.localStorage.getItem("scoreInfo"));
+  //   scoreArray =push(scoreInfo);
+
+  //   console.log(scoreInfo.initialName);
+
+  //   var li1 = document.createElement("li");
+  //   li1.textContent =
+  //     "Initials : " + scoreInfo.initialName + " - Score: " + scoreInfo.totalScore;
+  //   console.log("display");
+  //
 }
-
-//store finalscore in local storage
-
-//retrieve values from JSON.parse()
-var clearButton = document.getElementById("clear");
 
 showScores();
