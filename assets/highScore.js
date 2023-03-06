@@ -1,28 +1,19 @@
-var listEl = document.querySelector("#highscores");
+var listEl = document.querySelector("#highScores");
 var clearButton = document.getElementById("clear");
+var scoreArray = [];
 
 function showScores() {
   var totalScores =
     JSON.parse(window.localStorage.getItem("totalScores")) || [];
   for (var i = 0; i < totalScores.length; i++) {
+    var olEl = document.createElement("ol");
+    olEl.className = "orderedList";
     var liEl = document.createElement("li");
-    liEl.setAttribute("style", "text-align:center");
     liEl.textContent =
       totalScores[i].initialName + " - " + totalScores[i].totalScore;
-
-    listEl.appendChild(liEl);
+    olEl.appendChild(liEl);
+    listEl.appendChild(olEl);
   }
-
-  //   var scoreInfo = JSON.parse(window.localStorage.getItem("scoreInfo"));
-  //   scoreArray =push(scoreInfo);
-
-  //   console.log(scoreInfo.initialName);
-
-  //   var li1 = document.createElement("li");
-  //   li1.textContent =
-  //     "Initials : " + scoreInfo.initialName + " - Score: " + scoreInfo.totalScore;
-  //   console.log("display");
-  //
 }
 
 showScores();
