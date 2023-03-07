@@ -145,7 +145,8 @@ function viewScores(event) {
     totalScores.push(scoreInfo);
     //    console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
-    location.href = "./../../highScore.html";
+    location.href = "./../../Interview-Quiz/highScore.html";
+    //location.href = "./../../highScore.html";
     //location.href = "../../highScore.html";
   }
 
