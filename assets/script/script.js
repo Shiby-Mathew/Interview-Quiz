@@ -145,12 +145,12 @@ function viewScores(event) {
     totalScores.push(scoreInfo);
     console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
-    location.href =
-      "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
+    // location.href =
+    // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
     // location.replace(
     //  "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
     // );
-    //location.href = "./../../highScore.html";
+    location.href.pathname = "./../../highScore.html";
     //location.href = "../../highScore.html";
 
     // location.href =
