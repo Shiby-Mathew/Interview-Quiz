@@ -22,3 +22,9 @@ body {
   margin-left: 40%;
   font-size: 40px;
 }
+.message {
+  font-size: 100%;
+  text-align: center;
+  color: gray;
+  font-style: italic;
+}

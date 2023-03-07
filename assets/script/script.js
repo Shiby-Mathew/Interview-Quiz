@@ -6,9 +6,11 @@ var mainquestions = document.getElementById("mainquestions");
 var answers = document.getElementById("answers");
 var initialInput = document.querySelector("#initials");
 var totalScore = document.getElementById("total-score");
+var msg = document.querySelector(".message");
 var correctAns = 0;
 var questionIndex = 0;
 
+//Questions Array
 var myQuestions = [
   {
     question: "Who developed JavaScript ?",
@@ -33,7 +35,7 @@ var myQuestions = [
   },
   {
     question: "Which element is used to get highlighted text in HTML5 ",
-    qanswers: ["<u>", "<mark>", "<highligh>", "<b>"],
+    qanswers: ["<u>", "<mark>", "<highlight>", "<b>"],
     correct: "<mark>",
   },
   {
@@ -44,6 +46,8 @@ var myQuestions = [
 ];
 
 var timeLeft = myQuestions.length * 15;
+
+//Quiz  function starts here
 function startQuiz() {
   // hide start screen
   var startPage = document.getElementById("start-page");
@@ -99,10 +103,10 @@ function answerSelect() {
   // console.log(questionIndex);
   if (selectedAns === myQuestions[questionIndex].correct) {
     handleCorrect();
-    console.log("correct");
+    //console.log("correct");
   } else {
     handleWrong();
-    console.log("incorrect");
+    //console.log("incorrect");
   }
   questionIndex++;
 
@@ -111,11 +115,32 @@ function answerSelect() {
 
 function handleCorrect() {
   correctAns = correctAns + 15;
+  time();
+
+  msg.textContent = "correct";
+
   //message= "correct";
+}
+
+function time() {
+  msg.setAttribute("class", "message");
+  // msg.textContent = "correct";
+  setTimeout(function () {
+    console.log("Delayed for 1 second");
+    msg.setAttribute("class", "message hide");
+  }, 1000);
 }
 
 function handleWrong() {
   timeLeft -= 15;
+  time();
+  // msg.setAttribute("class", "message");
+  msg.textContent = "incorrect";
+  // setTimeout(function () {
+  //   console.log("Delayed for 1 second");
+  //   msg.setAttribute("class", "message hide");
+  // }, 1000);
+
   //message = "wrong";
 }
 
@@ -131,10 +156,10 @@ function finishedQuiz() {
 
 function viewScores(event) {
   event.preventDefault();
-  var name = initialInput.value.trim();
-  console.log("name:" + name);
+  var name = initialInput.value;
 
-  if (name !== " ") {
+  //Checking if value is enmty
+  if (name.length !== 0) {
     console.log("name:" + name);
     var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
 
@@ -145,20 +170,24 @@ function viewScores(event) {
     totalScores.push(scoreInfo);
     console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
+    
+    location.replace(
+      "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
+     );
+
     // location.href =
     // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
-    // location.replace(
-    //  "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
-    // );
-    // location.href.pathname = "./../../highScore.html";
-    //location.href = "../../highScore.html";
+    
+    //location.href.pathname = "./../../highScore.html";
+    //location.href = "./../../highScore.html";
 
     // location.href =
     // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
     //location.href = "./../../Interview-Quiz/highScore.html";
+    // window.open("./../../highScore.html");
+  } else {
+    return;
   }
-
-  window.open("./../../highScore.html");
 }
 
 //Game Start button

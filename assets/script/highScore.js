@@ -14,7 +14,7 @@ function showScores() {
       totalScores[i].totalScore;
     olEl.appendChild(liEl);
     listEl.appendChild(olEl);
-    console.log("from local storage");
+    //console.log("from local storage");
     //listEl.appendChild(olEl);
   }
 }
