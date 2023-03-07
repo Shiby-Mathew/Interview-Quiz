@@ -146,7 +146,7 @@ function viewScores(event) {
     totalScores.push(scoreInfo);
     //    console.log(scoreInfo);
     window.localStorage.setItem("totalScores", JSON.stringify(totalScores));
-    window.location.href = "highScore.html";
+    window.location.href = "../..highScore.html";
     //window.location.href = "highScore.html";
   }
 
