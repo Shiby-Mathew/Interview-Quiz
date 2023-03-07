@@ -143,7 +143,7 @@ function viewScores(event) {
       totalScore: correctAns,
     };
     totalScores.push(scoreInfo);
-    //    console.log(scoreInfo);
+    console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
     location.href =
       "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
