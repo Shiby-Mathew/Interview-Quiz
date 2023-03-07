@@ -148,8 +148,8 @@ function viewScores(event) {
 
     // location.href =
     // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
-    location.href = "./../../Interview-Quiz/highScore.html";
-    //location.href = "./../../highScore.html";
+    //location.href = "./../../Interview-Quiz/highScore.html";
+    location.href = "./../../highScore.html";
     //location.href = "../../highScore.html";
   }
 
