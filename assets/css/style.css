@@ -10,8 +10,10 @@ body {
 .start {
   text-align: center;
 }
+
 .time {
   text-align: right;
+  padding: 20px;
 }
 .orderedList {
   padding-left: 48%;
