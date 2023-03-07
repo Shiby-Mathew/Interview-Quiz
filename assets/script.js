@@ -27,7 +27,7 @@ var myQuestions = [
   },
   {
     question:
-      "Which of the following is used to read ant HTML page and render it?",
+      "Which of the following is used to read an HTML page and render it?",
     qanswers: ["Web Server", "Web Network", "Web Browser", "Web Matrix"],
     correct: "Web Browser",
   },
@@ -80,7 +80,10 @@ function getMyQuestion() {
     var answer = currentQuestion.qanswers[i];
     var answerButton = document.createElement("button");
     answerButton.setAttribute("value", answer);
-    answerButton.setAttribute("style", "padding:8px; margin:8px");
+    answerButton.setAttribute(
+      "style",
+      "padding:8px; margin:8px;font-size:16px"
+    );
     answerButton.textContent = answer;
     answers.appendChild(answerButton);
     answerButton.addEventListener("click", answerSelect);
@@ -129,8 +132,10 @@ function finishedQuiz() {
 function viewScores(event) {
   event.preventDefault();
   var name = initialInput.value.trim();
+  console.log("name:" + name);
 
-  if (name !== "") {
+  if (name !== " ") {
+    console.log("name:" + name);
     var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
 
     var scoreInfo = {
@@ -141,10 +146,10 @@ function viewScores(event) {
     //    console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
     location.href = "highScore.html";
+    //window.location.href = "highScore.html";
   }
 
   //window.open("highScore.html");
-  window.location.href = "highScore.html";
 }
 
 //Game Start button
