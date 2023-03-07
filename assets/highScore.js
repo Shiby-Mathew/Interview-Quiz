@@ -5,7 +5,8 @@ var clearButton = document.getElementById("clear");
 var scoreArray = [];
 
 function showScores() {
-  var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
+  var totalScores =
+    JSON.parse(window.localStorage.getItem("totalScores")) || [];
   for (var i = 0; i < totalScores.length; i++) {
     var liEl = document.createElement("li");
     liEl.textContent =
@@ -18,8 +19,8 @@ function showScores() {
   }
 }
 clearButton.addEventListener("click", function () {
-  localStorage.clear("totalScores");
-  location.reload();
+  window.localStorage.clear("totalScores");
+  window.location.reload();
 });
 
 showScores();

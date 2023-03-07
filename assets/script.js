@@ -136,7 +136,8 @@ function viewScores(event) {
 
   if (name !== " ") {
     console.log("name:" + name);
-    var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
+    var totalScores =
+      JSON.parse(window.localStorage.getItem("totalScores")) || [];
 
     var scoreInfo = {
       initialName: name,
@@ -144,7 +145,7 @@ function viewScores(event) {
     };
     totalScores.push(scoreInfo);
     //    console.log(scoreInfo);
-    localStorage.setItem("totalScores", JSON.stringify(totalScores));
+    window.localStorage.setItem("totalScores", JSON.stringify(totalScores));
     window.location.href = "highScore.html";
     //window.location.href = "highScore.html";
   }
