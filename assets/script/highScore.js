@@ -1,4 +1,4 @@
-var listEl = document.querySelector("#highScores");
+var listEl = document.querySelector("#highScore");
 var olEl = document.querySelector("#list");
 
 var clearButton = document.getElementById("clear");
@@ -14,6 +14,7 @@ function showScores() {
       totalScores[i].totalScore;
     olEl.appendChild(liEl);
     listEl.appendChild(olEl);
+    console.log("from local storage");
     //listEl.appendChild(olEl);
   }
 }

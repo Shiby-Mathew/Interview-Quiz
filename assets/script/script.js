@@ -150,7 +150,7 @@ function viewScores(event) {
     // location.replace(
     //  "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
     // );
-    location.href.pathname = "./../../highScore.html";
+    // location.href.pathname = "./../../highScore.html";
     //location.href = "../../highScore.html";
 
     // location.href =
@@ -158,7 +158,7 @@ function viewScores(event) {
     //location.href = "./../../Interview-Quiz/highScore.html";
   }
 
-  //window.open("highScore.html");
+  window.open("./../../highScore.html");
 }
 
 //Game Start button
