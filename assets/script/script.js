@@ -171,9 +171,9 @@ function viewScores(event) {
     console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
 
-    location.replace(
-      "https://shiby-mathew.github.io/Interrview-Quiz/highScore.html"
-    );
+    // location.replace(
+    //   "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
+    // );
 
     // location.href =
     // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
@@ -186,7 +186,7 @@ function viewScores(event) {
     //location.href = "./../../Interview-Quiz/highScore.html";
     // window.open("./../../highScore.html");
 
-    //window.location.href = 'highscores.html';
+    window.location.href = "highScore.html";
   } else {
     return;
   }
