@@ -6,6 +6,9 @@ var scoreArray = [];
 //Display localStorage values
 function showScores() {
   var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
+
+  totalScores.sort((a, b) => a.totalScore - b.totalScore);
+
   for (var i = 0; i < totalScores.length; i++) {
     var liEl = document.createElement("li");
     liEl.textContent =
@@ -14,8 +17,6 @@ function showScores() {
       totalScores[i].totalScore;
     olEl.appendChild(liEl);
     listEl.appendChild(olEl);
-    //console.log("from local storage");
-    //listEl.appendChild(olEl);
   }
 }
 
