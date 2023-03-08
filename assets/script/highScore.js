@@ -7,7 +7,7 @@ var scoreArray = [];
 function showScores() {
   var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
 
-  totalScores.sort((a, b) => a.totalScore - b.totalScore);
+  totalScores.sort((a, b) => b.totalScore - a.totalScore);
 
   for (var i = 0; i < totalScores.length; i++) {
     var liEl = document.createElement("li");
