@@ -1,6 +1,7 @@
 body {
   font-family: Arial;
   font-size: 25px;
+  background-color: rgb(210, 210, 191);
 }
 
 .hide {
@@ -11,6 +12,11 @@ body {
   text-align: center;
 }
 
+.startButton {
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgb(136, 136, 135);
+}
 .time {
   text-align: right;
   padding: 20px;
