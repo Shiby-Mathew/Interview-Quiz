@@ -1,9 +1,9 @@
 var listEl = document.querySelector("#highScore");
 var olEl = document.querySelector("#list");
-
 var clearButton = document.getElementById("clear");
 var scoreArray = [];
 
+//Display localStorage values
 function showScores() {
   var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];
   for (var i = 0; i < totalScores.length; i++) {
@@ -18,6 +18,8 @@ function showScores() {
     //listEl.appendChild(olEl);
   }
 }
+
+//Clear the localstorge values
 clearButton.addEventListener("click", function () {
   localStorage.clear("totalScores");
   location.reload();

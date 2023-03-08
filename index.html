@@ -11,7 +11,7 @@
 
   <body>
     <div id="score"><a href="highScore.html">High Scores</a></div>
-
+    <!-- Div for timer -->
     <div class="time">Time: <span id="time">0 s</span></div>
 
     <section>
@@ -21,18 +21,20 @@
           Choose the correct answer, every incorrect answer you will lose 15
           seconds
         </p>
+        <!-- button to start game -->
         <button style="font-weight: bold; font-size: 25px" id="start">
           Start Quiz
         </button>
       </article>
-
+      <!-- Display Question and answer -->
       <article id="questions" class="hide">
         <h2 id="mainquestions"></h2>
         <div id="answers" class="answers"></div>
       </article>
       <form>
+        <!-- This div show after the Quiz over -->
         <div id="lastPage" class="hide">
-          <h2>Test is Over!</h2>
+          <h2>Quiz is Over!</h2>
           <p>Here is your total score :<span id="total-score"></span></p>
           <p>
             Enter initials: <input type="text" id="initials" maxlength="3" />

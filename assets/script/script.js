@@ -49,12 +49,12 @@ var timeLeft = myQuestions.length * 15;
 
 //Quiz  function starts here
 function startQuiz() {
-  // hide start screen
   var startPage = document.getElementById("start-page");
   startPage.setAttribute("class", "hide");
 
   questionsDiv.setAttribute("class", "start");
 
+  // stetting countdown timer
   timerId = setInterval(function () {
     timeLeft--;
     timeStarter.textContent = timeLeft + " s";
@@ -69,16 +69,16 @@ function startQuiz() {
   getMyQuestion();
 }
 
+//Accessing questions and answers from myQuestions array
 function getMyQuestion() {
+  //checking if questions ran out or time =0 then finished the quiz
   if (questionIndex === myQuestions.length || timeLeft == 0) {
     finishedQuiz();
 
     return;
   }
   var currentQuestion = myQuestions[questionIndex];
-
   mainquestions.textContent = currentQuestion.question;
-
   answers.textContent = "";
   for (var i = 0; i < currentQuestion.qanswers.length; i++) {
     var answer = currentQuestion.qanswers[i];
@@ -94,6 +94,7 @@ function getMyQuestion() {
   }
 }
 
+//Selecting answers from the array and matching with selected answer
 function answerSelect() {
   if (questionIndex === myQuestions.length) {
     finishedQuiz();
@@ -113,37 +114,32 @@ function answerSelect() {
   getMyQuestion();
 }
 
-function handleCorrect() {
-  correctAns = correctAns + 15;
-  time();
-
-  msg.textContent = "correct";
-
-  //message= "correct";
-}
-
+//Time setting for display message
 function time() {
   msg.setAttribute("class", "message");
-  // msg.textContent = "correct";
+
   setTimeout(function () {
     console.log("Delayed for 1 second");
     msg.setAttribute("class", "message hide");
   }, 1000);
 }
 
+//Correct answer added up and display message
+function handleCorrect() {
+  correctAns = correctAns + 15;
+  time();
+
+  msg.textContent = "correct";
+}
+
+//Wrong answer lose 15seconds and display message
 function handleWrong() {
   timeLeft -= 15;
   time();
-  // msg.setAttribute("class", "message");
   msg.textContent = "incorrect";
-  // setTimeout(function () {
-  //   console.log("Delayed for 1 second");
-  //   msg.setAttribute("class", "message hide");
-  // }, 1000);
-
-  //message = "wrong";
 }
 
+//To show the final Score  end of the quiz page
 function finishedQuiz() {
   totalScore.textContent = correctAns;
   clearInterval(timerId);
@@ -154,6 +150,7 @@ function finishedQuiz() {
   answers.textContent = "";
 }
 
+// Stores the values in localStorage and display in highSore.html page
 function viewScores(event) {
   event.preventDefault();
   var name = initialInput.value;
@@ -171,21 +168,6 @@ function viewScores(event) {
     console.log(scoreInfo);
     localStorage.setItem("totalScores", JSON.stringify(totalScores));
 
-    // location.replace(
-    //   "https://shiby-mathew.github.io/Interview-Quiz/highScore.html"
-    // );
-
-    // location.href =
-    // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
-
-    //location.href.pathname = "./../../highScore.html";
-    //location.href = "./../../highScore.html";
-
-    // location.href =
-    // "https://shiby-mathew.github.io/Interview-Quiz/highScore.html";
-    //location.href = "./../../Interview-Quiz/highScore.html";
-    // window.open("./../../highScore.html");
-
     window.location.href = "highScore.html";
   } else {
     return;
@@ -195,4 +177,5 @@ function viewScores(event) {
 //Game Start button
 startButton.addEventListener("click", startQuiz);
 
+//Submit the form button
 submitButton.addEventListener("click", viewScores);
