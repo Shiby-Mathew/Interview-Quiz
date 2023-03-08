@@ -1,10 +1,15 @@
 # Interview-Quiz
 
+```
+The link for my deployed wesite can viewed here
+https://shiby-mathew.github.io/Interview-Quiz/
+
+```
+
 ## Description
 
 ```
-This application is a timed coding quiz with multiple-choice questions. This app runs in the browser and featured dynamically using HTML and CSS powered by JavaScript code.
-
+This application is a timed coding quiz with multiple-choice questions.This app will run in the browser and it features dynamically updated HTML along with CSS powered by JavaScript code. When you click  on Start button, the quiz will start. 15 seconds will be reduced for every incorrect answer.
 ```
 
 ## User Story
@@ -29,9 +34,13 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and my score
-WHEN I saved my initials and my score
+WHEN I save my initials and my score
 Then I can see my progress compared to my peers
 ```
+
+## Code Snippet
+
+![Git Bash,.](./assets/images/code.png)
 
 ## Mock-Up
 

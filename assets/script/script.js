@@ -54,7 +54,7 @@ function startQuiz() {
 
   questionsDiv.setAttribute("class", "start");
 
-  // stetting countdown timer
+  // setting countdown timer
   timerId = setInterval(function () {
     timeLeft--;
     timeStarter.textContent = timeLeft + " s";
@@ -101,13 +101,11 @@ function answerSelect() {
     return;
   }
   var selectedAns = this.value;
-  // console.log(questionIndex);
+
   if (selectedAns === myQuestions[questionIndex].correct) {
     handleCorrect();
-    //console.log("correct");
   } else {
     handleWrong();
-    //console.log("incorrect");
   }
   questionIndex++;
 
@@ -124,7 +122,7 @@ function time() {
   }, 1000);
 }
 
-//Correct answer added up and display message
+//Correct answer added up 15 points and display message
 function handleCorrect() {
   correctAns = correctAns + 15;
   time();
@@ -155,7 +153,7 @@ function viewScores(event) {
   event.preventDefault();
   var name = initialInput.value;
 
-  //Checking if value is enmty
+  //Checking if value is empty
   if (name.length !== 0) {
     console.log("name:" + name);
     var totalScores = JSON.parse(localStorage.getItem("totalScores")) || [];

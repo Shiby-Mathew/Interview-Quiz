@@ -1,7 +1,7 @@
 var listEl = document.querySelector("#highScore");
 var olEl = document.querySelector("#list");
 var clearButton = document.getElementById("clear");
-var scoreArray = [];
+// var scoreArray = [];
 
 //Display localStorage values
 function showScores() {
